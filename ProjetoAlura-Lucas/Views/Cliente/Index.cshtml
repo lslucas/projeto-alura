@@ -1,0 +1,59 @@
+﻿@using ProjetoAlura_Lucas.Dal;
+@model ClienteViewModel;
+@inject IClienteRepository repo;
+@{
+}
+<h1>@ViewData["Title"]</h1>
+
+<p align="justify">
+    Listagem e cadastro de clientes.
+
+    <div class="container">
+        <div class="container-fluid m-0 p-0">
+            <form method="post" class="form-inline" asp-action="OnPost">
+                <div class="row">
+                    <div class="col">
+                        <label class="sr-only">Nome</label>
+                        <input asp-for="Cliente.Nome" class="form-control" />
+                    </div>
+                    <div class="col">
+                        <label class="sr-only">Email</label>
+                        <input asp-for="Cliente.Email" class="form-control" />
+                    </div>
+                    <div class="col">
+                        <label class="sr-only">Foto</label>
+                        <input type="file" asp-for="Cliente.ProfilePic" class="form-control" />
+                    </div>
+                    <div class="col pt-4">
+                        <input type="submit" value="Incluir" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <hr/>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Link da foto</th>
+                    <th with="100"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in repo.GetAll())
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Email</td>
+                    <td>@item.ProfilePic</td>
+                    <td><input type="button" class="btn btn-secondary" value="Editar" /> &nbsp; <input type="button" class="btn btn-danger" value="Excluir" /></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</p>
