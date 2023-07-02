@@ -4,14 +4,12 @@ namespace ProjetoAlura_Lucas.Helpers
 {
     public static class BlobHelper
     {
-        public static async Task<string> UploadFile(IFormFile file)
+        public static async Task<string> UploadFile(IFormFile file, string connectionString)
         {
             if (file == null)
             {
                 return null;
             }
-
-            string connectionString = "DefaultEndpointsProtocol=https;AccountName=lslucas;AccountKey=hCPsx6GtF3a7AytibIeH87xLoTDPTHjKK0q4xdWSiYladGkOzzNIEnBv+h6Z4rpkTOF8IsnuERps+ASt7OvKxQ==;EndpointSuffix=core.windows.net";
 
             BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
 
@@ -38,11 +36,8 @@ namespace ProjetoAlura_Lucas.Helpers
             return blobClient.Uri.ToString();
         }
 
-        public static async Task DeleteBlob(string blobUrl)
+        public static async Task DeleteBlob(string blobUrl, string connectionString)
         {
-            // Retrieve the connection string for your Azure Storage account
-            string connectionString = "DefaultEndpointsProtocol=https;AccountName=lslucas;AccountKey=hCPsx6GtF3a7AytibIeH87xLoTDPTHjKK0q4xdWSiYladGkOzzNIEnBv+h6Z4rpkTOF8IsnuERps+ASt7OvKxQ==;EndpointSuffix=core.windows.net";
-
             // Create a BlobServiceClient object using the connection string
             BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
 

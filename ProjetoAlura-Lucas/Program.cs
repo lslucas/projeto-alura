@@ -1,4 +1,5 @@
 using ProjetoAlura_Lucas.Dal;
+using Microsoft.Extensions.Azure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 //builder.Services.AddRazorPages();
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
+builder.Services.AddAzureClients(clientBuilder =>
+{
+    clientBuilder.AddBlobServiceClient(builder.Configuration["ConnectionStrings.Blob:blob"], preferMsi: true);
+    clientBuilder.AddQueueServiceClient(builder.Configuration["ConnectionStrings.Blob:queue"], preferMsi: true);
+});
 
 var app = builder.Build();
 

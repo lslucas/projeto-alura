@@ -10,12 +10,17 @@ namespace ProjetoAlura_Lucas.Controllers
     {
         private readonly ILogger<ClienteController> _logger;
         public readonly IClienteRepository _clienteRepository;
+        public readonly IConfiguration _configuration;
         public Cliente Cliente { get; set; }
+        public readonly string connString;
 
-        public ClienteController(ILogger<ClienteController> logger, IClienteRepository clienteRepository)
+        public ClienteController(ILogger<ClienteController> logger, IClienteRepository clienteRepository, IConfiguration configuration)
         {
             _logger = logger;
             _clienteRepository = clienteRepository;
+            _configuration = configuration;
+
+            connString = _configuration.GetSection("ConnectionStrings").GetValue<string>("Blob");
         }
 
         public IActionResult Index()
@@ -34,7 +39,7 @@ namespace ProjetoAlura_Lucas.Controllers
                 return View("Index");
             }
 
-            cliente.ProfilePic = await BlobHelper.UploadFile(cliente.ProfilePicFile);
+            cliente.ProfilePic = await BlobHelper.UploadFile(cliente.ProfilePicFile, connString);
             _clienteRepository.Add(cliente);
 
             return Redirect("/Cliente");
@@ -49,7 +54,7 @@ namespace ProjetoAlura_Lucas.Controllers
                 if (item.ProfilePic != null)
                 {
                     // apaga blob antes de apagar o item
-                    BlobHelper.DeleteBlob(item.ProfilePic);
+                    BlobHelper.DeleteBlob(item.ProfilePic, connString);
                 }
 
                 _clienteRepository.Remove(id);
