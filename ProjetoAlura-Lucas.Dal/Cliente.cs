@@ -16,6 +16,9 @@ namespace ProjetoAlura_Lucas.Dal {
         public string Email { get; set; }
 
         [Display(Name = "Foto de perfil")]
-        public string ProfilePic { get; set; }
+        public IFormFile? ProfilePicFile { get; set; }
+
+        public string? ProfilePic { get; set; }
+
     }
 }

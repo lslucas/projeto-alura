@@ -34,7 +34,7 @@ namespace ProjetoAlura_Lucas.Dal
 			{
 				var conn = this.GetConnection();
 				using (var cn = new SqlConnection(conn)) {
-					var rawQuery = "INSERT INTO TBClientes (Nome, Email) VALUES (@Nome, @Email);";
+					var rawQuery = "INSERT INTO TBClientes (Nome, Email, ProfilePic) VALUES (@Nome, @Email, @ProfilePic);";
 					return cn.Execute(rawQuery, cliente);
 				}
 			}
@@ -50,7 +50,7 @@ namespace ProjetoAlura_Lucas.Dal
 			{
 				var conn = this.GetConnection();
 				using (var cn = new SqlConnection(conn)) {
-					var result = cn.Query<Cliente>("SELECT Nome, Email, ProfilePic FROM TBClientes WHERE Id=@Id;", id);
+					var result = cn.Query<Cliente>("SELECT Nome, Email, ProfilePic FROM TBClientes WHERE Id=@Id;", new { Id = id });
                     return result.FirstOrDefault();
 				}
 			}
@@ -66,7 +66,7 @@ namespace ProjetoAlura_Lucas.Dal
 			{
 				var conn = this.GetConnection();
 				using (var cn = new SqlConnection(conn)) {
-					var result = cn.Query<Cliente>("SELECT Nome, Email, ProfilePic FROM TBClientes;");
+					var result = cn.Query<Cliente>("SELECT Id, Nome, Email, ProfilePic FROM TBClientes;");
                     return result;
 				}
 			}
@@ -110,7 +110,7 @@ namespace ProjetoAlura_Lucas.Dal
 				var conn = this.GetConnection();
 				using (var cn = new SqlConnection(conn)) {
 					var rawQuery = "DELETE FROM TBClientes WHERE Id=@Id;";
-					return cn.Execute(rawQuery, id);
+					return cn.Execute(rawQuery, new { Id = id });
 				}
 			}
 			catch (Exception ex)

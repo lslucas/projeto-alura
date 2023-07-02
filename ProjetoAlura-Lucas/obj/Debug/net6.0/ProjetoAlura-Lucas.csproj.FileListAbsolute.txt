@@ -39,3 +39,9 @@ C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\obj\Debug\net6
 C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\obj\Debug\net6.0\ProjetoAlura-Lucas.pdb
 C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\obj\Debug\net6.0\ProjetoAlura-Lucas.genruntimeconfig.cache
 C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\obj\Debug\net6.0\ref\ProjetoAlura-Lucas.dll
+C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\bin\Debug\net6.0\Azure.Storage.Common.dll
+C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\bin\Debug\net6.0\System.IO.Hashing.dll
+C:\Users\lucas\source\repos\ProjetoAlura-Lucas\ProjetoAlura-Lucas\bin\Debug\net6.0\System.Memory.Data.dll

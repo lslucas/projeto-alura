@@ -10,7 +10,7 @@
 
     <div class="container">
         <div class="container-fluid m-0 p-0">
-            <form method="post" class="form-inline" asp-action="OnPost">
+            <form method="post" class="form-inline" asp-action="add" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col">
                         <label class="sr-only">Nome</label>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="col">
                         <label class="sr-only">Foto</label>
-                        <input type="file" asp-for="Cliente.ProfilePic" class="form-control" />
+                        <input type="file" asp-for="Cliente.ProfilePicFile" class="form-control" />
                     </div>
                     <div class="col pt-4">
                         <input type="submit" value="Incluir" class="btn btn-primary" />
@@ -38,8 +38,8 @@
                     <th>Id</th>
                     <th>Nome</th>
                     <th>Email</th>
-                    <th>Link da foto</th>
-                    <th with="100"></th>
+                    <th>Foto</th>
+                    <th width="60px"></th>
                 </tr>
             </thead>
             <tbody>
@@ -49,8 +49,11 @@
                     <td>@item.Id</td>
                     <td>@item.Nome</td>
                     <td>@item.Email</td>
-                    <td>@item.ProfilePic</td>
-                    <td><input type="button" class="btn btn-secondary" value="Editar" /> &nbsp; <input type="button" class="btn btn-danger" value="Excluir" /></td>
+                    <td><a href="@item.ProfilePic" target="_blank"><img src="@item.ProfilePic" height="50" /></a></td>
+                    <td>
+                        <!--<input type="button" class="btn btn-secondary" value="Editar" /> &nbsp;-->
+                            @Html.ActionLink("Excluir", "RemoveData", new { id = item.Id }, new {@class = "btn btn-danger"})
+                    </td>
                 </tr>
                 }
             </tbody>
